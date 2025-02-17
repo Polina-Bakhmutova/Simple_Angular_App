@@ -1,0 +1,44 @@
+<form #subjectForm="ngForm" (ngSubmit)="onSubmit(subjectForm)">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input 
+      type="text" 
+      id="name" 
+      class="form-control" 
+      [(ngModel)]="subject.name" 
+      name="name" 
+      required 
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="teacher">Teacher:</label>
+    <input 
+      type="text" 
+      id="teacher" 
+      class="form-control" 
+      [(ngModel)]="subject.teacher" 
+      name="teacher" 
+      required 
+    />
+  </div>
+
+ 
+  <button 
+    type="submit" 
+    class="btn btn-primary" 
+    [disabled]="!subjectForm.valid"
+  >
+    {{ isEditing ? 'Update' : 'Add' }} Subject
+  </button>
+
+  <!-- доделать удаление -->
+  <button 
+    type="button" 
+    class="btn btn-danger" 
+    *ngIf="isEditing" 
+    (click)="onDeleteClick()"
+  >
+    Delete Subject
+  </button>
+</form>
